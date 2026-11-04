@@ -2,18 +2,16 @@
 
 <html lang="zh-Hant">
 <head>
-  <G-0L8LP6GFFL>
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L8LP6GFFL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-XXXXXXXXXX');
+    gtag('config', 'G-0L8LP6GFFL');
   </script>
-</head>
 
-<head>
   <meta charset="UTF-8">
   <title>東區尤德夫人那打素醫院 物理治療部 - STarT 背部檢測工具</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
@@ -353,164 +351,6 @@ const bothersomeOptions = [
 const CONFIG = {
   hospitalTitle: "醫院管理局 東區尤德夫人那打素醫院\n物理治療部",
   title: "STarT Back Screening Tool\nSTarT 背部檢測工具",
-  instruction: "請按<strong>過去兩周內</strong>的情況來回答下列問題：",
-  items: [
-    { title: "在過去兩周內，我的背痛有時已經擴散到腿部。", options: binaryOptions },
-    { title: "在過去兩周內，我有時會有肩或頸部疼痛的情況。", options: binaryOptions },
-    { title: "我曾因為背痛而僅能短距離行走。", options: binaryOptions },
-    { title: "在過去兩周內，我曾因為背痛導致穿衣服的速度比平常緩慢。", options: binaryOptions },
-    { title: "我認為對於一個和我有相同狀況的人來說，體力活動是不安全的。", options: binaryOptions },
-    { title: "我常會擔心我的背痛。", options: binaryOptions },
-    { title: "我覺得我的背痛很嚴重，且不會得到任何改善。", options: binaryOptions },
-    { title: "整體而言，我不再享受過去喜歡做的事。", options: binaryOptions },
-    { title: "整體而言，過去兩周內背痛對您的影響程度如何？", options: bothersomeOptions }
-  ]
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-  initQuestionnaire();
-});
-
-function initQuestionnaire() {
-  const hospEl = document.getElementById("hospitalTitle");
-  if (CONFIG.hospitalTitle) {
-    hospEl.textContent = CONFIG.hospitalTitle;
-  } else {
-    hospEl.style.display = "none";
-  }
-
-  document.getElementById("formTitle").textContent = CONFIG.title;
-  document.getElementById("formInstruction").innerHTML = CONFIG.instruction;
-
-  const container = document.getElementById("questionsContainer");
-  container.innerHTML = "";
-
-  CONFIG.items.forEach((item, index) => {
-    const qNum = index + 1;
-    const card = document.createElement("div");
-    card.className = "question-card";
-    card.id = `card-q${qNum}`;
-
-    const title = document.createElement("div");
-    title.className = "question-title";
-    title.textContent = `${qNum}. ${item.title}`;
-    card.appendChild(title);
-
-    const optionsGroup = document.createElement("div");
-    optionsGroup.className = "options-group";
-
-    item.options.forEach(opt => {
-      const label = document.createElement("label");
-      label.className = "option-item";
-      label.htmlFor = `q${qNum}_${opt.key}`;
-
-      const radio = document.createElement("input");
-      radio.type = "radio";
-      radio.name = `q${qNum}`;
-      radio.id = `q${qNum}_${opt.key}`;
-      radio.value = opt.value;
-      radio.className = "hidden-radio";
-
-      radio.addEventListener("change", () => {
-        optionsGroup.querySelectorAll(".option-item").forEach(el => el.classList.remove("selected"));
-        if (radio.checked) {
-          label.classList.add("selected");
-          card.classList.remove("highlight-error");
-        }
-      });
-
-      const dot = document.createElement("span");
-      dot.className = "custom-radio";
-      dot.setAttribute("aria-hidden", "true");
-
-      const itemText = document.createElement("span");
-      itemText.className = "option-text";
-      itemText.textContent = opt.label;
-
-      label.append(radio, dot, itemText);
-      optionsGroup.appendChild(label);
-    });
-
-    card.appendChild(optionsGroup);
-    container.appendChild(card);
-  });
-}
-
-function submitAssessment() {
-  const unanswered = [];
-  document.querySelectorAll(".question-card").forEach(c => c.classList.remove("highlight-error"));
-
-  for (let i = 1; i <= CONFIG.items.length; i++) {
-    if (!document.querySelector(`input[name="q${i}"]:checked`)) {
-      unanswered.push(i);
-    }
-  }
-
-  if (unanswered.length > 0) {
-    unanswered.forEach(num => {
-      const card = document.getElementById(`card-q${num}`);
-      if (card) card.classList.add("highlight-error");
-    });
-
-    const firstCard = document.getElementById(`card-q${unanswered[0]}`);
-    if (firstCard) {
-      firstCard.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-    return;
-  }
-
-  let totalScore = 0;
-  let subScore = 0;
-
-  for (let i = 1; i <= 9; i++) {
-    const selected = document.querySelector(`input[name="q${i}"]:checked`);
-    const val = parseInt(selected.value, 10);
-    totalScore += val;
-    if (i >= 5) {
-      subScore += val;
-    }
-  }
-
-  let riskCategory = "";
-  let riskClass = "";
-
-  if (totalScore <= 3) {
-    riskCategory = "低風險 (LR ≤ 3)";
-    riskClass = "risk-low";
-  } else {
-    if (subScore >= 4) {
-      riskCategory = "高風險 (HR: 次總分 ≥ 4)";
-      riskClass = "risk-high";
-    } else {
-      riskCategory = "中風險 (MR)";
-      riskClass = "risk-med";
-    }
-  }
-
-  document.getElementById("modalScoreValue").textContent = `${totalScore} / 9 分`;
-  document.getElementById("riskLevelDisplay").innerHTML = `<span class="risk-badge ${riskClass}">${riskCategory}</span>`;
-  document.getElementById("modalScoreSubtitle").innerHTML = `次總分 (第5–9題心理指標)：<strong>${subScore}</strong> / 5 分`;
-
-  const modal = document.getElementById("scoreModal");
-  modal.style.display = "flex";
-}
-
-function closeModal() {
-  document.getElementById("scoreModal").style.display = "none";
-}
-
-function handleBackdropClick(e) {
-  if (e.target.id === "scoreModal") {
-    closeModal();
-  }
-}
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeModal();
-  }
-});
-</script>
-
+  instruction: "請按<strong>過去兩周內</strong>的情況來回答
 </body>
 </html>
