@@ -2,7 +2,7 @@
 
 <html lang="zh-Hant">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <G-0L8LP6GFFL>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L8LP6GFFL"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
