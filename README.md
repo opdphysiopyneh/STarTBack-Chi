@@ -2,6 +2,16 @@
 
 <html lang="zh-Hant">
 <head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0L8LP6GFFL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0L8LP6GFFL');
+</script>
+
   <meta charset="UTF-8">
   <title>東區尤德夫人那打素醫院 物理治療部 - STarT 背部檢測工具</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
