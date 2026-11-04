@@ -1,7 +1,6 @@
 # STarTBack-Chi
 
 <html lang="zh-Hant">
-<head>
   <G-0L8LP6GFFL>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L8LP6GFFL"></script>
 <script>
