@@ -2,19 +2,19 @@
 
 <html lang="zh-Hant">
 <head>
+  <meta charset="UTF-8">
+  <title>東區尤德夫人那打素醫院 物理治療部 - STarT 背部檢測工具</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L8LP6GFFL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-0L8LP6GFFL');
   </script>
 
-  <meta charset="UTF-8">
-  <title>東區尤德夫人那打素醫院 物理治療部 - STarT 背部檢測工具</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
   <style>
     :root {
       --primary: #007AFF;
@@ -73,7 +73,7 @@
       color: #636366;
       font-weight: 600;
       margin-bottom: 4px;
-      white-space: pre-line;
+      line-height: 1.4;
     }
 
     .main-title {
@@ -82,7 +82,6 @@
       margin: 0 0 8px 0;
       color: var(--text-main);
       line-height: 1.25;
-      white-space: pre-line;
     }
 
     .instruction {
@@ -301,18 +300,185 @@
 
 <div class="container">
   <div class="header-card">
-    <div class="hospital-title" id="hospitalTitle"></div>
-    <h1 class="main-title" id="formTitle"></h1>
-    <p class="instruction" id="formInstruction"></p>
+    <div class="hospital-title">醫院管理局 東區尤德夫人那打素醫院<br>物理治療部</div>
+    <h1 class="main-title">STarT Back Screening Tool<br>STarT 背部檢測工具</h1>
+    <p class="instruction">請按<strong>過去兩周內</strong>的情況來回答下列問題：</p>
   </div>
 
   <form id="evaluationForm">
-    <div id="questionsContainer"></div>
-    
+    <!-- Q1 -->
+    <div class="question-card" id="card-q1">
+      <div class="question-title">1. 在過去兩周內，我的背痛有時已經擴散到腿部。</div>
+      <div class="options-group">
+        <label class="option-item" for="q1_disagree">
+          <input type="radio" name="q1" id="q1_disagree" value="0" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">不同意</span>
+        </label>
+        <label class="option-item" for="q1_agree">
+          <input type="radio" name="q1" id="q1_agree" value="1" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">同意</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-card" id="card-q2">
+      <div class="question-title">2. 在過去兩周內，我有時會有肩或頸部疼痛的情況。</div>
+      <div class="options-group">
+        <label class="option-item" for="q2_disagree">
+          <input type="radio" name="q2" id="q2_disagree" value="0" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">不同意</span>
+        </label>
+        <label class="option-item" for="q2_agree">
+          <input type="radio" name="q2" id="q2_agree" value="1" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">同意</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-card" id="card-q3">
+      <div class="question-title">3. 我曾因為背痛而僅能短距離行走。</div>
+      <div class="options-group">
+        <label class="option-item" for="q3_disagree">
+          <input type="radio" name="q3" id="q3_disagree" value="0" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">不同意</span>
+        </label>
+        <label class="option-item" for="q3_agree">
+          <input type="radio" name="q3" id="q3_agree" value="1" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">同意</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-card" id="card-q4">
+      <div class="question-title">4. 在過去兩周內，我曾因為背痛導致穿衣服的速度比平常緩慢。</div>
+      <div class="options-group">
+        <label class="option-item" for="q4_disagree">
+          <input type="radio" name="q4" id="q4_disagree" value="0" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">不同意</span>
+        </label>
+        <label class="option-item" for="q4_agree">
+          <input type="radio" name="q4" id="q4_agree" value="1" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">同意</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-card" id="card-q5">
+      <div class="question-title">5. 我認為對於一個和我有相同狀況的人來說，體力活動是不安全的。</div>
+      <div class="options-group">
+        <label class="option-item" for="q5_disagree">
+          <input type="radio" name="q5" id="q5_disagree" value="0" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">不同意</span>
+        </label>
+        <label class="option-item" for="q5_agree">
+          <input type="radio" name="q5" id="q5_agree" value="1" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">同意</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question-card" id="card-q6">
+      <div class="question-title">6. 我常會擔心我的背痛。</div>
+      <div class="options-group">
+        <label class="option-item" for="q6_disagree">
+          <input type="radio" name="q6" id="q6_disagree" value="0" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">不同意</span>
+        </label>
+        <label class="option-item" for="q6_agree">
+          <input type="radio" name="q6" id="q6_agree" value="1" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">同意</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question-card" id="card-q7">
+      <div class="question-title">7. 我覺得我的背痛很嚴重，且不會得到任何改善。</div>
+      <div class="options-group">
+        <label class="option-item" for="q7_disagree">
+          <input type="radio" name="q7" id="q7_disagree" value="0" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">不同意</span>
+        </label>
+        <label class="option-item" for="q7_agree">
+          <input type="radio" name="q7" id="q7_agree" value="1" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">同意</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question-card" id="card-q8">
+      <div class="question-title">8. 整體而言，我不再享受過去喜歡做的事。</div>
+      <div class="options-group">
+        <label class="option-item" for="q8_disagree">
+          <input type="radio" name="q8" id="q8_disagree" value="0" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">不同意</span>
+        </label>
+        <label class="option-item" for="q8_agree">
+          <input type="radio" name="q8" id="q8_agree" value="1" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">同意</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question-card" id="card-q9">
+      <div class="question-title">9. 整體而言，過去兩周內背痛對您的影響程度如何？</div>
+      <div class="options-group">
+        <label class="option-item" for="q9_not_at_all">
+          <input type="radio" name="q9" id="q9_not_at_all" value="0" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">完全不受影響</span>
+        </label>
+        <label class="option-item" for="q9_slightly">
+          <input type="radio" name="q9" id="q9_slightly" value="0" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">輕微影響</span>
+        </label>
+        <label class="option-item" for="q9_moderately">
+          <input type="radio" name="q9" id="q9_moderately" value="0" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">中度影響</span>
+        </label>
+        <label class="option-item" for="q9_very_much">
+          <input type="radio" name="q9" id="q9_very_much" value="1" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">非常影響</span>
+        </label>
+        <label class="option-item" for="q9_extremely">
+          <input type="radio" name="q9" id="q9_extremely" value="1" class="hidden-radio" onchange="handleSelect(this)">
+          <span class="custom-radio" aria-hidden="true"></span>
+          <span class="option-text">重度影響</span>
+        </label>
+      </div>
+    </div>
+
     <button type="button" class="calc-btn" onclick="submitAssessment()">計算評估結果</button>
   </form>
 </div>
 
+<!-- Modal -->
 <div id="scoreModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="handleBackdropClick(event)">
   <div class="modal-content" onclick="event.stopPropagation()">
     <h2 id="modalTitle">評估結果</h2>
@@ -329,28 +495,102 @@
       您亦可以進行螢幕截圖。<br>
       謝謝。
     </div>
-    
+
     <button type="button" class="close-btn" onclick="closeModal()">關閉</button>
   </div>
 </div>
 
 <script>
-const binaryOptions = [
-  { key: "disagree", value: 0, label: "不同意" },
-  { key: "agree", value: 1, label: "同意" }
-];
+function handleSelect(radio) {
+  var group = radio.closest('.options-group');
+  var card = radio.closest('.question-card');
+  if (group) {
+    group.querySelectorAll('.option-item').forEach(function(el) {
+      el.classList.remove('selected');
+    });
+  }
+  if (radio.checked) {
+    radio.closest('.option-item').classList.add('selected');
+    if (card) card.classList.remove('highlight-error');
+  }
+}
 
-const bothersomeOptions = [
-  { key: "not_at_all", value: 0, label: "完全不受影響" },
-  { key: "slightly", value: 0, label: "輕微影響" },
-  { key: "moderately", value: 0, label: "中度影響" },
-  { key: "very_much", value: 1, label: "非常影響" },
-  { key: "extremely", value: 1, label: "重度影響" }
-];
+function submitAssessment() {
+  var unanswered = [];
+  document.querySelectorAll('.question-card').forEach(function(c) {
+    c.classList.remove('highlight-error');
+  });
 
-const CONFIG = {
-  hospitalTitle: "醫院管理局 東區尤德夫人那打素醫院\n物理治療部",
-  title: "STarT Back Screening Tool\nSTarT 背部檢測工具",
-  instruction: "請按<strong>過去兩周內</strong>的情況來回答
+  for (var i = 1; i <= 9; i++) {
+    if (!document.querySelector('input[name="q' + i + '"]:checked')) {
+      unanswered.push(i);
+    }
+  }
+
+  if (unanswered.length > 0) {
+    unanswered.forEach(function(num) {
+      var card = document.getElementById('card-q' + num);
+      if (card) card.classList.add('highlight-error');
+    });
+
+    var firstCard = document.getElementById('card-q' + unanswered[0]);
+    if (firstCard) {
+      firstCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return;
+  }
+
+  var totalScore = 0;
+  var subScore = 0;
+
+  for (var j = 1; j <= 9; j++) {
+    var selected = document.querySelector('input[name="q' + j + '"]:checked');
+    var val = parseInt(selected.value, 10);
+    totalScore += val;
+    if (j >= 5) {
+      subScore += val;
+    }
+  }
+
+  var riskCategory = "";
+  var riskClass = "";
+
+  if (totalScore <= 3) {
+    riskCategory = "低風險 (LR ≤ 3)";
+    riskClass = "risk-low";
+  } else {
+    if (subScore >= 4) {
+      riskCategory = "高風險 (HR: 次總分 ≥ 4)";
+      riskClass = "risk-high";
+    } else {
+      riskCategory = "中風險 (MR)";
+      riskClass = "risk-med";
+    }
+  }
+
+  document.getElementById("modalScoreValue").textContent = totalScore + " / 9 分";
+  document.getElementById("riskLevelDisplay").innerHTML = '<span class="risk-badge ' + riskClass + '">' + riskCategory + '</span>';
+  document.getElementById("modalScoreSubtitle").innerHTML = '次總分 (第5–9題心理指標)：<strong>' + subScore + '</strong> / 5 分';
+
+  document.getElementById("scoreModal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("scoreModal").style.display = "none";
+}
+
+function handleBackdropClick(e) {
+  if (e.target.id === "scoreModal") {
+    closeModal();
+  }
+}
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+});
+</script>
+
 </body>
 </html>
